@@ -1,11 +1,11 @@
-from chatbot import chatbot
+from chatbot import Chatbot
 
-bot = chatbot()
+bot = Chatbot()
 
 while True:
     message = input("You: ")
 
-    if message.lower() == "exit"
+    if message.lower() == "exit":
         break
 
     print("Bot:", bot.reply(message))
