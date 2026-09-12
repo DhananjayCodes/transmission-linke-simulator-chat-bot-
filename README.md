@@ -5,8 +5,8 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python\&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](#)
-[![Issues](https://img.shields.io/github/issues/YOUR_USERNAME/TransLine-Sim)](https://github.com/YOUR_USERNAME/TransLine-Sim/issues)
-[![Stars](https://img.shields.io/github/stars/YOUR_USERNAME/TransLine-Sim?style=social)](https://github.com/YOUR_USERNAME/TransLine-Sim/stargazers)
+[![Issues](https://img.shields.io/github/issues/nikhilkush078/TransLine-Sim)](https://github.com/nikhilkush078/TransLine-Sim/issues)
+[![Stars](https://img.shields.io/github/stars/nikhilkush078/TransLine-Sim?style=social)](https://github.com/nikhilkush078/TransLine-Sim/stargazers)
 
 > **A retro-inspired engineering workstation for analyzing, visualizing, and understanding electrical transmission lines.**
 
@@ -506,7 +506,7 @@ Python 3.8+
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/TransLine-Sim.git
+git clone https://github.com/nikhilkush078/TransLine-Sim.git
 cd TransLine-Sim
 ```
 
@@ -685,7 +685,7 @@ Create your own fork of **TransLine-Sim**.
 ### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/TransLine-Sim.git
+git clone https://github.com/nikhilkush078/TransLine-Sim.git
 cd TransLine-Sim
 ```
 
