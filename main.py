@@ -23,26 +23,26 @@ class PowerSystemApp(tk.Tk):
     def __init__(self):
         super().__init__()
 
-    self.title("TRANSMISSION LINE & POWER SYSTEM ANALYSIS")
-    self.geometry("1280x900")
-    self.minsize(1080, 760)
-    self.configure(bg="#F0F0F0")
+        self.title("TRANSMISSION LINE & POWER SYSTEM ANALYSIS")
+        self.geometry("1280x900")
+        self.minsize(1080, 760)
+        self.configure(bg="#F0F0F0")
 
-    self._make_variables()
-    self._make_styles()
-    self._build_ui()
+        self._make_variables()
+        self._make_styles()
+        self._build_ui()
 
-    self._update_conductor_fields()
-    self._update_sld()
+        self._update_conductor_fields()
+        self._update_sld()
 
-    # Create chatbot
-    self.chatbot = Chatbot()
+        # Create chatbot
+        self.chatbot = Chatbot()
 
-    self.chatbot_ui = ChatbotUI(
-        self,
-        self.chatbot,
-        self.get_system_data
-    )
+        self.chatbot_ui = ChatbotUI(
+            self,
+            self.chatbot,
+            self.get_system_data
+        )
 
     def _make_variables(self):
         self.voltage = tk.StringVar(value="132 kV")
@@ -371,7 +371,32 @@ class PowerSystemApp(tk.Tk):
         ir = (S / (3 * vr)).conjugate(); isource = (A * ir + (0 if B == 0 else B * ir))
         losses = max(0, 3 * (abs(ir) ** 2) * (B.real if B else 0))
         return vr, losses, S, isource
-
+    
+    def get_system_data(self):
+        return {
+            "voltage": self.voltage.get(),
+            "frequency": self.frequency.get(),
+            "load": self.load.get(),
+            "load_unit": self.load_unit.get(),
+            "power_factor": self.pf.get(),
+            "conductor": self.conductor.get(),
+            "length": self.length.get(),
+            "topology": self.topology.get(),
+            "spacing": self.spacing.get(),
+            "radius": self.radius.get(),
+            "rdc": self.rdc.get(),
+            "rac": self.result_vars["rac"].get(),
+            "inductance": self.result_vars["inductance"].get(),
+            "capacitance": self.result_vars["capacitance"].get(),
+            "vr": self.result_vars["vr"].get(),
+            "regulation": self.result_vars["regulation"].get(),
+            "losses": self.result_vars["losses"].get(),
+            "efficiency": self.result_vars["efficiency"].get(),
+            "noload": self.result_vars["noload"].get(),
+            "rise": self.result_vars["rise"].get(),
+            "capacity": self.result_vars["capacity"].get(),
+            "model": self.result_vars["model"].get()
+    }   
     def calculate(self):
         try:
             vk, f, length, spacing, radius, rdc, pf, load = self._read_inputs()
@@ -401,36 +426,5 @@ class PowerSystemApp(tk.Tk):
         except (ValueError, ZeroDivisionError, OverflowError) as exc:
             messagebox.showerror("Input Error", str(exc) or "Please enter valid numeric values.")
 
-
 if __name__ == "__main__":
-    def get_system_data(self):
-
-        return {
-        "voltage": self.voltage.get(),
-        "frequency": self.frequency.get(),
-        "load": self.load.get(),
-        "load_unit": self.load_unit.get(),
-        "power_factor": self.pf.get(),
-
-        "conductor": self.conductor.get(),
-        "length": self.length.get(),
-        "topology": self.topology.get(),
-        "spacing": self.spacing.get(),
-        "radius": self.radius.get(),
-        "rdc": self.rdc.get(),
-
-        "rac": self.result_vars["rac"].get(),
-        "inductance": self.result_vars["inductance"].get(),
-        "capacitance": self.result_vars["capacitance"].get(),
-
-        "vr": self.result_vars["vr"].get(),
-        "regulation": self.result_vars["regulation"].get(),
-        "losses": self.result_vars["losses"].get(),
-        "efficiency": self.result_vars["efficiency"].get(),
-
-        "noload": self.result_vars["noload"].get(),
-        "rise": self.result_vars["rise"].get(),
-        "capacity": self.result_vars["capacity"].get(),
-        "model": self.result_vars["model"].get()
-    }
     PowerSystemApp().mainloop()
