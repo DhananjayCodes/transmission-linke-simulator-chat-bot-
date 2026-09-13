@@ -253,6 +253,8 @@ class ChatbotUI:
         chips_frame.pack(fill="x")
 
         chips = [
+            ("Inductance", "What is inductance?"),
+            ("Ground Height", "What happens if I increase conductor height from ground?"),
             ("Reactance", "What is inductive reactance?"),
             ("Length Trend", "When line length increases, what changes occur in resistance, inductance, and capacitance?"),
             ("Spacing Trend", "What happens when we increase the distance between the conductors?"),

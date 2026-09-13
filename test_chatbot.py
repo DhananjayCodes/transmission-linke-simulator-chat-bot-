@@ -67,6 +67,37 @@ class TestPowerSystemChatbot(unittest.TestCase):
             resp = self.bot.reply(q, self.mock_system_data)
             self.assertIn(expected_keyword, resp.lower(), f"Expected '{expected_keyword}' in answer for: {q}")
 
+    def test_conductor_radius_questions(self):
+        response = self.bot.reply("What happens if I increase the radius of the conductor?", self.mock_system_data)
+        self.assertIn("resistance decreases", response.lower())
+        self.assertIn("inductance decreases", response.lower())
+        self.assertIn("capacitance increases", response.lower())
+
+    def test_conductor_height_questions(self):
+        response = self.bot.reply("What happens if I increase the height of the conductor from ground?", self.mock_system_data)
+        self.assertIn("capacitance decreases", response.lower())
+        self.assertIn("charging current", response.lower())
+
+    def test_core_offline_concepts(self):
+        concepts = {
+            "What is inductance?": "magnetic field",
+            "What is capacitance?": "electric field",
+            "What is resistance?": "ohms",
+            "What is current?": "amperes",
+        }
+        for question, expected in concepts.items():
+            response = self.bot.reply(question, self.mock_system_data)
+            self.assertIn(expected, response.lower(), question)
+
+    def test_topology_is_an_offline_concept(self):
+        response = self.bot.reply("What is a topology?", self.mock_system_data)
+        self.assertIn("physical arrangement", response.lower())
+
+    def test_radius_what_if_calculation(self):
+        response = self.bot.reply("What if conductor radius is 10 mm?", self.mock_system_data)
+        self.assertIn("Conductor radius", response)
+        self.assertIn("Total Capacitance", response)
+
     def test_live_system_telemetry(self):
         # Voltage regulation
         reg_resp = self.bot.reply("What is the voltage regulation?", self.mock_system_data)
@@ -86,7 +117,7 @@ class TestPowerSystemChatbot(unittest.TestCase):
 
     def test_what_if_calculation(self):
         what_if_resp = self.bot.reply("What would the parameters be if length is 250 km?", self.mock_system_data)
-        self.assertIn("COMPARATIVE PARAMETRIC SIMULATION", what_if_resp)
+        self.assertIn("Calculation Result", what_if_resp)
         self.assertIn("LONG LINE", what_if_resp)
 
     def test_history_logging(self):
