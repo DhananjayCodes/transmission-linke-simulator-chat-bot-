@@ -80,8 +80,9 @@ class PowerSystemApp(tk.Tk):
         style.configure("Output.TLabel", background="#FFFFFF", relief="sunken", borderwidth=1, anchor="e", padding=4)
 
     def _build_ui(self):
-        outer = ttk.Frame(self, padding=10)
-        outer.pack(fill="both", expand=True)
+        self.app_frame = ttk.Frame(self, padding=10)
+        self.app_frame.pack(side="left", fill="both", expand=True)
+        outer = self.app_frame
         ttk.Label(outer, text="TRANSMISSION LINE & POWER SYSTEM ANALYSIS", style="Header.TLabel").pack(anchor="w")
         ttk.Label(outer, text="CLASSIC ENGINEERING CALCULATION CONSOLE  |  ABCD PARAMETER MODEL", foreground="#555555").pack(anchor="w", pady=(0, 7))
         self.canvas = tk.Canvas(outer, height=125, bg="white", highlightthickness=1, highlightbackground="#555555")
