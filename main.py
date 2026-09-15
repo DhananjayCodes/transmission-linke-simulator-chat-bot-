@@ -397,7 +397,14 @@ class PowerSystemApp(tk.Tk):
             "rise": self.result_vars["rise"].get(),
             "capacity": self.result_vars["capacity"].get(),
             "model": self.result_vars["model"].get()
-    }   
+    }   what is the inductance
+
+⚡ Power Assistant:
+I can answer this with a local language model once one is installed. For the offline engine now, ask about:
+• Receiving or sending-end voltages (definitions or live values)
+• Inductive or capacitive reactance formulas
+• Effects of line length or conductor spacing
+• System simulations (e.g. 'what if frequency is 60 Hz')
     def calculate(self):
         try:
             vk, f, length, spacing, radius, rdc, pf, load = self._read_inputs()
